@@ -72,7 +72,7 @@ class Comment(db.Model):
 
 
 # Create all the tables in the database
-#db.create_all()
+db.create_all()
 
 
 
