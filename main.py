@@ -189,7 +189,7 @@ def about():
     return render_template("about.html", current_user=current_user)
 
 
-@app.route("/contact")
+@app.route("/contact", methods=['POST'])
 def contact():
     name = request.form['name']
     email = request.form['email']
