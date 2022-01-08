@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, request
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 from datetime import date
@@ -11,7 +11,6 @@ from flask_gravatar import Gravatar
 from functools import wraps
 from flask import abort
 import os
-import smtplib
 
 
 app = Flask(__name__)
@@ -189,21 +188,8 @@ def about():
     return render_template("about.html", current_user=current_user)
 
 
-@app.route("/contact", methods=['POST'])
+@app.route("/contact")
 def contact():
-    name = request.form['name']
-    email = request.form['email']
-    phone = request.form['phone']
-    message = request.form['message']
-    with smtplib.SMTP("smtp.gmail.com") as connection:
-        connection.starttls()
-        connection.login(MY_EMAIL, MY_PASSWORD)
-        connection.sendmail(
-            from_addr=email,
-            to_addrs="iam@adrianjandongan.me",
-            msg=f"Subject:[AJ.Blog] Contact Form\n\nName: {name}\nEmail {email}\nPhone: {phone}\nMessage: {message}"
-        )
-    print(f"{name}\n{email}\n{phone}\n{message}")
     return render_template("contact.html", current_user=current_user)
 
 
