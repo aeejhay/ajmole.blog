@@ -24,9 +24,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-MY_EMAIL = os.environ.get("EMAIL")
-MY_PASSWORD = os.environ.get("PASSWORD")
-
 login_manager = LoginManager()
 login_manager.init_app(app)
 
